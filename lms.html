@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMS Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <!-- Navbar -->
+    <nav class="bg-blue-600 text-white p-4 flex justify-between items-center">
+        <a href="#" class="text-lg font-bold">LMS</a>
+        <div class="hidden md:flex space-x-4">
+            <a href="#home" class="hover:underline">Home</a>
+            <a href="#courses" class="hover:underline">Courses</a>
+            <a href="#about" class="hover:underline">About</a>
+            <a href="#contact" class="hover:underline">Contact</a>
+        </div>
+        <button id="menuToggle" class="md:hidden focus:outline-none">☰</button>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-blue-600 text-white p-4">
+        <a href="#home" class="block py-2">Home</a>
+        <a href="#courses" class="block py-2">Courses</a>
+        <a href="#about" class="block py-2">About</a>
+        <a href="#contact" class="block py-2">Contact</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="bg-gradient-to-r from-blue-500 to-blue-700 text-white py-16 px-8 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Welcome to the LMS</h1>
+        <p class="text-lg md:text-xl mb-6">Learn at your own pace with our variety of online courses</p>
+        <a href="#courses" class="bg-white text-blue-700 py-2 px-6 rounded-md font-semibold hover:bg-gray-200">Explore Courses</a>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="py-16 px-8">
+        <h2 class="text-3xl font-bold text-center mb-8">Our Courses</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-2">Web Development</h3>
+                <ul class="text-gray-600 mb-4 space-y-2">
+                    <li><strong>Subclasses:</strong> HTML, CSS, JavaScript</li>
+                    <li><strong>Start Date:</strong> March 1, 2025</li>
+                </ul>
+                <a href="#web-development" class="text-blue-600 font-bold hover:underline">Learn More</a>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-2">Data Science</h3>
+                <ul class="text-gray-600 mb-4 space-y-2">
+                    <li><strong>Subclasses:</strong> Python, Machine Learning, AI</li>
+                    <li><strong>Start Date:</strong> April 15, 2025</li>
+                </ul>
+                <a href="#data-science" class="text-blue-600 font-bold hover:underline">Learn More</a>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-2">Graphic Design</h3>
+                <ul class="text-gray-600 mb-4 space-y-2">
+                    <li><strong>Subclasses:</strong> Photoshop, Illustrator, Figma</li>
+                    <li><strong>Start Date:</strong> February 20, 2025</li>
+                </ul>
+                <a href="#graphic-design" class="text-blue-600 font-bold hover:underline">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Web Development Course Details -->
+    <section id="web-development" class="py-16 px-8 bg-gray-200 hidden">
+        <h2 class="text-3xl font-bold text-center mb-8">Web Development</h2>
+        <p class="text-gray-700 mb-6">
+            This course covers the basics of web development, including HTML, CSS, and JavaScript. Learn to build responsive and modern websites with a structured approach.
+        </p>
+        <p class="text-gray-700 mb-6">
+            <strong>Notes on Introduction to HTML, CSS Fundamentals, and JavaScript Basics</strong><br>
+            <strong>HTML:</strong> The standard markup language for creating web pages. It structures content on the web using elements and tags.<br>
+            <strong>CSS:</strong> Used to style and layout web pages, controlling the visual presentation.<br>
+            <strong>JavaScript:</strong> Adds interactivity to web pages, such as dynamic content and event handling.
+        </p>
+        <ul class="list-disc ml-6 mb-6">
+            <li><strong>HTML:</strong> Elements represent parts of a webpage like headings, paragraphs, images, and links. Tags are enclosed in angle brackets (e.g., &lt;tag&gt;).</li>
+            <li><strong>CSS:</strong> Style and layout content using properties like color, font, and spacing.</li>
+            <li><strong>JavaScript:</strong> Add interactivity, such as dynamic content and event handling.</li>
+        </ul>
+        <p class="text-gray-700 mb-6">
+            Below is an example of a simple HTML structure:
+        </p>
+        <pre class="bg-gray-100 p-4 rounded-lg text-sm overflow-auto">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;My Webpage&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Welcome to HTML&lt;/h1&gt;
+    &lt;p&gt;This is a paragraph.&lt;/p&gt;
+    &lt;a href="https://example.com"&gt;Visit Example&lt;/a&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+        </pre>
+        <div class="mb-6">
+            <h3 class="text-xl font-bold">Videos</h3>
+            <ul class="list-disc ml-6">
+                <li><a href="https://youtu.be/MDLn5-zSQQI?si=5vxZmGtV0D0MTSIF" class="text-blue-600 hover:underline">Introduction to HTML</a></li>
+                <li><a href="https://youtu.be/OEV8gMkCHXQ?si=gUvy3XAStjy-pH0b" class="text-blue-600 hover:underline">CSS Fundamentals</a></li>
+                <li><a href="https://youtu.be/lkIFF4maKMU?si=a-BqjXfe_vJ17Ta2" class="text-blue-600 hover:underline">JavaScript Basics</a></li>
+            </ul>
+        </div>
+        <div>
+            <h3 class="text-xl font-bold">Attendance Record</h3>
+            <table class="w-full border-collapse border border-gray-300 mt-4">
+                <thead>
+                    <tr class="bg-blue-600 text-white">
+                        <th class="border border-gray-300 p-2">Date</th>
+                        <th class="border border-gray-300 p-2">Status</th>
+                    </tr>
+                </thead>
+                <tbody id="webDevAttendance"></tbody>
+            </table>
+            <input type="date" id="webDevDate" class="mt-4 p-2 border rounded">
+            <select id="webDevStatus" class="p-2 border rounded">
+                <option value="Present">Present</option>
+                <option value="Absent">Absent</option>
+            </select>
+            <button onclick="addAttendance('webDevAttendance', 'webDevDate', 'webDevStatus')" class="ml-2 p-2 bg-blue-600 text-white rounded">Add</button>
+        </div>
+    </section>
+
+    <!-- Data Science Course Details -->
+    <section id="data-science" class="py-16 px-8 bg-gray-200 hidden">
+        <h2 class="text-3xl font-bold text-center mb-8">Data Science</h2>
+        <p class="text-gray-700 mb-6">
+            This course dives into data analysis, machine learning, and artificial intelligence. Learn the fundamentals of Python programming, algorithms, and data visualization techniques.
+        </p>
+        <ul class="list-disc ml-6 mb-6">
+            <li><strong>Python:</strong> Basics of programming, including syntax, data types, and libraries.</li>
+            <li><strong>Machine Learning:</strong> Algorithms to analyze data and build predictive models.</li>
+            <li><strong>Visualization:</strong> Creating charts and dashboards to interpret data effectively.</li>
+        </ul>
+        <div class="mb-6">
+            <h3 class="text-xl font-bold">Videos</h3>
+            <ul class="list-disc ml-6">
+                <li><a href="https://youtu.be/fWjsdhR3z3c?si=t3vWmayOftC5gNLN" class="text-blue-600 hover:underline">Python Basics</a></li>
+                <li><a href="https://youtu.be/ukzFI9rgwfU?si=SZ1MSUILcDx_et9y" class="text-blue-600 hover:underline">Introduction to Machine Learning</a></li>
+                <li><a href="https://youtu.be/MiiANxRHSv4?si=UskIA1Z4BD9UtHsd" class="text-blue-600 hover:underline">Data Visualization Techniques</a></li>
+            </ul>
+        </div>
+        <div>
+            <h3 class="text-xl font-bold">Attendance Record</h3>
+            <table class="w-full border-collapse border border-gray-300 mt-4">
+                <thead>
+                    <tr class="bg-blue-600 text-white">
+                        <th class="border border-gray-300 p-2">Date</th>
+                        <th class="border border-gray-300 p-2">Status</th>
+                    </tr>
+                </thead>
+                <tbody id="dataScienceAttendance"></tbody>
+            </table>
+            <input type="date" id="dataScienceDate" class="mt-4 p-2 border rounded">
+            <select id="dataScienceStatus" class="p-2 border rounded">
+                <option value="Present">Present</option>
+                <option value="Absent">Absent</option>
+            </select>
+            <button onclick="addAttendance('dataScienceAttendance', 'dataScienceDate', 'dataScienceStatus')" class="ml-2 p-2 bg-blue-600 text-white rounded">Add</button>
+        </div>
+    </section>
+
+    <section id="graphic-design" class="py-16 px-8 bg-gray-200 hidden">
+        <h2 class="text-3xl font-bold text-center mb-8">Graphic Design</h2>
+        <p class="text-gray-700 mb-6">
+            Learn the tools and techniques for creating stunning visual content. This course includes topics such as Photoshop, Illustrator, and Figma for design professionals.
+        </p>
+        <ul class="list-disc ml-6 mb-6">
+            <li><strong>Photoshop:</strong> Basics of photo editing and manipulation.</li>
+            <li><strong>Illustrator:</strong> Vector-based graphic design and logo creation.</li>
+            <li><strong>Figma:</strong> UI/UX design for modern web and app interfaces.</li>
+        </ul>
+        <div class="mb-6">
+            <h3 class="text-xl font-bold">Videos</h3>
+            <ul class="list-disc ml-6">
+                <li><a href="https://youtu.be/Rx3FquN30TE?si=-ePVsBGWng3tvDuI" class="text-blue-600 hover:underline">Introduction to Photoshop</a></li>
+                <li><a href="https://youtu.be/3NBKRywEbNs?si=_IgmHk0Zj6vYREa1" class="text-blue-600 hover:underline">Illustrator Basics</a></li>
+                <li><a href="https://youtu.be/8meWGsj1LU8?si=dIOEWgdhZbIuebqI" class="text-blue-600 hover:underline">Figma for UI/UX</a></li>
+            </ul>
+        </div>
+        <div>
+            <h3 class="text-xl font-bold">Attendance Record</h3>
+            <table class="w-full border-collapse border border-gray-300 mt-4">
+                <thead>
+                    <tr class="bg-blue-600 text-white">
+                        <th class="border border-gray-300 p-2">Date</th>
+                        <th class="border border-gray-300 p-2">Status</th>
+                    </tr>
+                </thead>
+                <tbody id="graphicDesignAttendance"></tbody>
+            </table>
+            <input type="date" id="graphicDesignDate" class="mt-4 p-2 border rounded">
+            <select id="graphicDesignStatus" class="p-2 border rounded">
+                <option value="Present">Present</option>
+                <option value="Absent">Absent</option>
+            </select>
+            <button onclick="addAttendance('graphicDesignAttendance', 'graphicDesignDate', 'graphicDesignStatus')" class="ml-2 p-2 bg-blue-600 text-white rounded">Add</button>
+        </div>
+    </section>
+
+
+    <!-- About Section -->
+    
+        <section id="about" class="bg-gray-200 py-16 px-8">
+            <h2 class="text-3xl font-bold text-center mb-8">About Us</h2>
+            <p class="text-center max-w-2xl mx-auto text-gray-700">
+                Our Learning Management System (LMS) portal is designed to revolutionize online learning by providing an engaging and user-friendly platform for both learners and educators. Here’s a detailed look at the features and benefits of our LMS:
+            </p>
+        
+            <div class="max-w-4xl mx-auto">
+                <h3 class="text-2xl font-bold mt-6 mb-4">Features of the LMS Portal</h3>
+        
+                <h4 class="text-xl font-semibold mt-4">1. Responsive and Intuitive Design</h4>
+                <ul class="list-disc ml-6 mb-4 text-gray-700">
+                    <li>The LMS is accessible across all devices, including desktops, tablets, and smartphones, ensuring a seamless experience for users.</li>
+                    <li>A clean, minimalistic interface makes navigation simple and enhances user engagement.</li>
+                </ul>
+        
+                <h4 class="text-xl font-semibold mt-4">2. Course Offerings</h4>
+                <ul class="list-disc ml-6 mb-4 text-gray-700">
+                    <li><strong>Web Development:</strong> Learn the fundamentals of HTML, CSS, and JavaScript with practical examples and real-world applications.</li>
+                    <li><strong>Data Science:</strong> Dive into Python programming, machine learning algorithms, and data visualization techniques.</li>
+                    <li><strong>Graphic Design:</strong> Master tools like Photoshop, Illustrator, and Figma to create professional designs.</li>
+                </ul>
+        
+                <h4 class="text-xl font-semibold mt-4">3. Comprehensive Learning Materials</h4>
+                <ul class="list-disc ml-6 mb-4 text-gray-700">
+                    <li><strong>Detailed Notes:</strong> Simplified explanations of complex topics.</li>
+                    <li><strong>Videos:</strong> High-quality tutorials that cater to different learning styles.</li>
+                    <li><strong>Examples and Exercises:</strong> Practical tasks to reinforce learning.</li>
+                </ul>
+        
+                <h4 class="text-xl font-semibold mt-4">4. Attendance Tracking</h4>
+                <p class="text-gray-700 mb-4">
+                    An integrated attendance management system allows users to manually record attendance for each course, helping learners stay on track.
+                </p>
+        
+                <h4 class="text-xl font-semibold mt-4">5. Dynamic Content Management</h4>
+                <ul class="list-disc ml-6 mb-4 text-gray-700">
+                    <li>Toggle functionality between sections, such as courses and contact forms, makes navigation smooth and hassle-free.</li>
+                    <li>Structured notes are presented in an easy-to-digest format, promoting efficient learning.</li>
+                </ul>
+        
+                <h4 class="text-xl font-semibold mt-4">6. Engaging Welcome Section</h4>
+                <p class="text-gray-700 mb-4">
+                    A visually appealing hero section introduces users to the platform and encourages them to explore the courses.
+                </p>
+        
+                <h4 class="text-xl font-semibold mt-4">7. Communication Features</h4>
+                <p class="text-gray-700 mb-4">
+                    A fully functional contact form allows learners to connect with the support team, share feedback, or inquire about specific courses.
+                </p>
+        
+                <h3 class="text-2xl font-bold mt-6 mb-4">Why Choose Our LMS?</h3>
+                <ul class="list-disc ml-6 mb-4 text-gray-700">
+                    <li><strong>Flexibility:</strong> Learn at your own pace with resources accessible anytime and anywhere.</li>
+                    <li><strong>Diversity:</strong> A range of courses catering to technical, analytical, and creative fields.</li>
+                    <li><strong>Ease of Use:</strong> Simple navigation ensures learners can focus on their goals without distractions.</li>
+                    <li><strong>Modern Design:</strong> A sleek and engaging layout that enhances the overall learning experience.</li>
+                </ul>
+        
+                <p class="text-gray-700">
+                    Our LMS portal is your gateway to acquiring new skills, advancing your career, and achieving your goals with confidence. Join our community today and embark on a journey of lifelong learning!
+                </p>
+            </div>
+        </section>
+    
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 px-8">
+        <h2 class="text-3xl font-bold text-center mb-8">Contact Us</h2>
+        <form class="max-w-xl mx-auto bg-white p-6 rounded-lg shadow-md">
+            <div class="mb-4">
+                <label for="name" class="block text-gray-700 font-semibold mb-2">Name</label>
+                <input type="text" id="name" class="w-full border-gray-300 rounded-md focus:ring focus:ring-blue-200" placeholder="Your Name" required>
+            </div>
+            <div class="mb-4">
+                <label for="email" class="block text-gray-700 font-semibold mb-2">Email</label>
+                <input type="email" id="email" class="w-full border-gray-300 rounded-md focus:ring focus:ring-blue-200" placeholder="Your Email" required>
+            </div>
+            <div class="mb-4">
+                <label for="message" class="block text-gray-700 font-semibold mb-2">Message</label>
+                <textarea id="message" class="w-full border-gray-300 rounded-md focus:ring focus:ring-blue-200" placeholder="Your Message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="bg-blue-600 text-white py-2 px-4 rounded-md font-bold hover:bg-blue-700">Send Message</button>
+        </form>
+    </section>
+
+   
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const courseLinks = document.querySelectorAll('a[href^="#"]');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        courseLinks.forEach(link => {
+            link.addEventListener('click', (event) => {
+                const targetId = link.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    event.preventDefault();
+                    document.querySelectorAll('section').forEach(section => section.classList.add('hidden'));
+                    targetSection.classList.remove('hidden');
+                }
+            });
+        });
+
+      
+        function addAttendance(tableId, dateId, statusId) {
+            const tableBody = document.getElementById(tableId);
+            const date = document.getElementById(dateId).value;
+            const status = document.getElementById(statusId).value;
+            if (date) {
+                const row = document.createElement('tr');
+                row.innerHTML = `<td class="border border-gray-300 p-2">${date}</td><td class="border border-gray-300 p-2">${status}</td>`;
+                tableBody.appendChild(row);
+            }
+        }
+    </script>
+</body>
+</html>

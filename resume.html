@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Resume Form</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    .photo-frame {
+      width: 120px;
+      height: 120px;
+      border: 3px dashed #60a5fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-radius: 8px;
+      background-color: #f9fafb;
+    }
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<div class="bg-gray-900 min-h-screen flex items-center justify-center px-4 py-10">
+  <div class="bg-white shadow-lg rounded-lg w-full max-w-4xl p-6">
+    <h1 class="text-2xl font-bold text-center text-blue-600 mb-6">Responsive Resume Builder</h1>
+
+    <!-- Form -->
+    <form id="resumeForm" class="space-y-6">
+      <!-- Photo Upload -->
+      <div class="flex justify-end">
+        <div class="photo-frame">
+          <img id="photoPreview" src="" alt="Photo Preview">
+        </div>
+        <input type="file" id="photo" accept="image/*" class="mt-2 w-full text-sm" onchange="previewPhoto(event)">
+      </div>
+
+      <!-- Bio Section -->
+      <h2 class="text-lg font-semibold text-blue-600">1. Bio</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <input type="text" id="name" placeholder="Full Name" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <input type="number" id="age" placeholder="Age" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <input type="date" id="dob" placeholder="Date of Birth" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <input type="tel" id="phone" placeholder="Phone Number" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <input type="email" id="email" placeholder="Email Address" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <input type="text" id="address" placeholder="Address" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <input type="text" id="github" placeholder="GitHub Link" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <input type="text" id="linkedin" placeholder="LinkedIn Link" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+        
+      </div>
+
+      <!-- Educational Section -->
+      <h2 class="text-lg font-semibold text-blue-700">2. Educational</h2>
+      <div class="overflow-x-auto">
+        <table class="table-auto w-full border border-gray-300">
+          <thead>
+            <tr class="bg-gray-200 text-gray-700 text-center">
+              <th class="border px-4 py-3">Level</th>
+              <th class="border px-4 py-3">College Name</th>
+              <th class="border px-4 py-3">Degree</th>
+              <th class="border px-4 py-3">Marks</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="text-center">
+              <td class="bg-gray-700 text-white border px-4 py-3">UG</td>
+              <td class="border px-4 py-3">
+                <input type="text" id="ugCollege" placeholder="UG College" class="w-full px-2 py-1 border rounded-md">
+              </td>
+              <td class="border px-4 py-3">
+                <input type="text" id="ugDegree" placeholder="UG Degree" class="w-full px-2 py-1 border rounded-md">
+              </td>
+              <td class="border px-4 py-3">
+                <input type="number" id="ugPercentage" placeholder="UG %" class="w-full px-2 py-1 border rounded-md">
+              </td>
+            </tr>
+            <tr class="text-center">
+              <td class="bg-gray-700 text-white border px-4 py-3">PG</td>
+              <td class="border px-4 py-3">
+                <input type="text" id="pgCollege" placeholder="PG College" class="w-full px-2 py-1 border rounded-md">
+              </td>
+              <td class="border px-4 py-3">
+                <input type="text" id="pgDegree" placeholder="PG Degree" class="w-full px-2 py-1 border rounded-md">
+              </td>
+              <td class="border px-4 py-3">
+                <input type="number" id="pgPercentage" placeholder="PG %" class="w-full px-2 py-1 border rounded-md">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Experience and Internship Section -->
+      <h2 class="text-lg font-semibold text-blue-700">3. Experience</h2>
+      <div class="grid grid-cols-1 gap-4">
+        <div>
+          <label for="experience" class="block text-gray-700">Working Experience</label>
+          <select id="experience" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <option value="fresher">Fresher</option>
+            <option value="1-3yrs">1-3 Years</option>
+            <option value="4-6yrs">4-6 Years</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div>
+          <label for="internship" class="block text-gray-700">Any Internship Experience</label>
+          <select id="internship" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <option value="2months">2 Month intern attended </option>
+            <option value="3months">3 Months intern attended</option>
+            <option value="6months">6 Months intern attended</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- General Section -->
+      <h2 class="text-lg font-semibold text-blue-700">4. General</h2>
+      <div class="grid grid-cols-1 gap-4">
+        <textarea id="hobbies" placeholder="Hobbies" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+        <textarea id="skills" placeholder="Skills" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+        <textarea id="interests" placeholder="Interests" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+        <textarea id="advancedSkills" placeholder="Advanced Skills (Outside Domain)" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+      </div>
+
+      <!-- Profile and Projects -->
+      <h2 class="text-lg font-semibold text-blue-700">5. Profile & Projects</h2>
+      <div class="grid grid-cols-1 gap-4">
+        <input type="text" id="profileLink" placeholder="Profile Link" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <textarea id="projects" placeholder="Projects (Title and Links)" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+      </div>
+
+      <!-- Declaration -->
+      <h2 class="text-lg font-semibold text-blue-700">6. Declaration</h2>
+      <textarea id="declaration" placeholder="Declaration" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+
+      <!-- Submit Button -->
+      <div class="flex justify-center mt-6">
+        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-md transition-transform transform hover:scale-105">
+          Save & Download Resume
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function previewPhoto(event) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        document.getElementById('photoPreview').src = reader.result;
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    }
+
+    document.getElementById('resumeForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF({ format: "a4" });
+
+      // Add Title
+      doc.text("Resume", 105, 20, { align: "center" });
+
+      // Add Bio Information
+      doc.text(`Name: ${document.getElementById('name').value}`, 10, 30);
+      doc.text(`Age: ${document.getElementById('age').value}`, 10, 40);
+      doc.text(`Date of Birth: ${document.getElementById('dob').value}`, 10, 50);
+      doc.text(`Phone: ${document.getElementById('phone').value}`, 10, 60);
+      doc.text(`Email Address: ${document.getElementById('email').value}`, 10, 70);
+      doc.text(`Address: ${document.getElementById('address').value}`, 10, 80);
+      doc.text(`GitHub Link: ${document.getElementById('github').value}`, 10, 90);
+      doc.text(`LinkedIn Link: ${document.getElementById('linkedin').value}`, 10, 100);
+
+      // Add Educational Details
+      doc.text(`UG College: ${document.getElementById('ugCollege').value}`, 10, 110);
+      doc.text(`UG Degree: ${document.getElementById('ugDegree').value}`, 10, 120);
+      doc.text(`UG Percentage: ${document.getElementById('ugPercentage').value}%`, 10, 130);
+      doc.text(`PG College: ${document.getElementById('pgCollege').value}`, 10, 140);
+      doc.text(`PG Degree: ${document.getElementById('pgDegree').value}`, 10, 150);
+      doc.text(`PG Percentage: ${document.getElementById('pgPercentage').value}%`, 10, 160);
+
+
+      // Add Experience and Internship Details
+      doc.text(`Working Experience: ${document.getElementById('experience').value}`, 10, 170);
+      doc.text(` Any Internship Experience: ${document.getElementById('internship').value}`, 10, 180);
+
+      // Add General Information
+      doc.text(`Hobbies: ${document.getElementById('hobbies').value}`, 10, 190);
+      doc.text(`Skills: ${document.getElementById('skills').value}`, 10, 200);
+      doc.text(`Interests: ${document.getElementById('interests').value}`, 10, 210);
+      doc.text(`Advanced Skills (Outside Domain): ${document.getElementById('advancedSkills').value}`, 10, 220);
+
+      // Add Profile and Projects Information
+      doc.text(`Profile Link: ${document.getElementById('profileLink').value}`, 10, 230);
+      doc.text(`Projects (Title and Links): ${document.getElementById('projects').value}`, 10, 240);
+
+      // Add Declaration
+      doc.text(`Declaration: ${document.getElementById('declaration').value}`, 10, 250);
+         // Photo Handling
+      const photoInput = document.getElementById('photo');
+      const reader = new FileReader();
+      reader.onload = function (event) {
+        const base64Image = event.target.result;
+
+        // Add Image to PDF (top-right corner)
+        doc.addImage(base64Image, "JPEG", 150, 10, 40, 40); // x=150, y=10, width=40, height=40
+        doc.save("resume.pdf");
+      };
+
+      if (photoInput.files[0]) {
+        reader.readAsDataURL(photoInput.files[0]); // Convert the image to Base64
+      } else {
+        // Save PDF without photo if no image is selected
+        doc.save("resume.pdf");
+      }
+
+    });
+  </script>
+</body>
+</html>

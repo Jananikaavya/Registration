@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>✍️Registration </title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    
+    .fade-in {
+      animation: fadeIn 1s ease-out forwards;
+    }
+  </style>
+</head>
+<body class="bg-gray-900 min-h-screen flex items-center justify-center">
+
+
+  <!-- Registration Form Section -->
+  <div id="registrationSection" class="flex items-center justify-center min-h-screen">
+    <div class="shadow-xl   rounded-lg p-8 max-w-md w-full fade-in">
+      <h1 class="text-3xl font-bold text-white mb-6 text-center">Registration Form</h1>
+      
+      <form id="registrationForm" class="space-y-6">
+        <!-- Name -->
+        <div>
+          <label for="name" class="block text-lg font-medium text-white">Full Name</label>
+          <input type="text" id="name" class="w-full px-6 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your full name" required>
+        </div>
+
+        <!-- Email -->
+        <div>
+          <label for="email" class="block text-lg font-medium text-white">Email ID</label>
+          <input type="email" id="email" class="w-full px-6 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your email" required>
+        </div>
+
+        <!-- Password -->
+        <div>
+          <label for="password" class="block text-lg font-medium text-white">Create Password</label>
+          <input type="password" id="password" class="w-full px-6 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Create a password" required>
+          <div id="passwordMessage" class="text-green-600 mt-2 hidden">Password Saved!</div>
+        </div>
+
+        <!-- Purpose -->
+        <div>
+          <label for="purpose" class="block text-lg font-medium text-white">Purpose</label>
+          <select id="purpose" class="w-full px-6 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <option value="resume">Resume Form</option>
+            <option value="lms">LMS Portal</option>
+            <option value="counseling">Counseling</option>
+          </select>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="w-full bg-gray-700 hover:bg-blue-700 text-white font-semibold py-3 rounded-md transition duration-300 transform hover:scale-105">Register</button>
+      </form>
+
+      <!-- Login Option -->
+      <div class="mt-4 text-center">
+        <p class="text-sm text-gray-900">Already have an account?</p>
+        <button id="loginButton" class="text-blue-700 hover:underline text-sm font-extrabold mt-2">
+          Login
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Login Form Section -->
+  <div id="loginSection" class="hidden flex items-center justify-center min-h-screen">
+    <div class="bg-white rounded-lg p-8 max-w-md w-full fade-in">
+      <h1 class="text-3xl font-bold text-black mb-6 text-center">Login</h1>
+      
+      <form id="loginForm" class="space-y-6">
+        <!-- Email -->
+        <div>
+          <label for="loginEmail" class="block text-lg font-medium text-gray-700">Email ID</label>
+          <input type="email" id="loginEmail" class="w-full px-6 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your email" required>
+        </div>
+
+        <!-- Password -->
+        <div>
+          <label for="loginPassword" class="block text-lg font-medium text-gray-700">Password</label>
+          <input type="password" id="loginPassword" class="w-full px-6 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your password" required>
+        </div>
+
+        <!-- Login Button -->
+        <button type="submit" class="w-full bg-purple-600 hover:bg-black text-white font-semibold py-3 rounded-md transition duration-300 transform hover:scale-105">Login</button>
+      </form>
+
+      <!-- Back to Registration -->
+      <div class="mt-4 text-center">
+        <p class="text-sm text-gray-600">Don't have an account?</p>
+        <button id="registrationButton" class="text-blue-500 hover:underline text-sm font-semibold mt-2">
+          New Registration
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Registration Form Submission
+    document.getElementById("registrationForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      // Collect Form Data
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const purpose = document.getElementById("purpose").value;
+
+      // Save Data in LocalStorage
+      localStorage.setItem("name", name);
+      localStorage.setItem("email", email);
+      localStorage.setItem("password", password);
+      localStorage.setItem("purpose", purpose);
+
+      // Show Password Saved Message
+      document.getElementById("passwordMessage").classList.remove("hidden");
+      
+      // Redirect Based on Purpose after 2 seconds
+      setTimeout(() => {
+        alert("Registration Successful!");
+        if (purpose === "resume") {
+          window.location.href = "/resume.html";
+        } else if (purpose === "lms") {
+          window.location.href = "/lms.html";
+        } else if (purpose === "counseling") {
+          window.location.href = "/counseling.html";
+        }
+      }, 2000);
+    });
+
+    // Redirect to Login Page
+    document.getElementById("loginButton").addEventListener("click", function () {
+      document.getElementById("registrationSection").classList.add("hidden");
+      document.getElementById("loginSection").classList.remove("hidden");
+
+      // Autofill Login Fields
+      const email = localStorage.getItem("email");
+      const password = localStorage.getItem("password");
+      if (email && password) {
+        document.getElementById("loginEmail").value = email;
+        document.getElementById("loginPassword").value = password;
+      }
+    });
+
+    // Redirect to Registration Form
+    document.getElementById("registrationButton").addEventListener("click", function () {
+      document.getElementById("loginSection").classList.add("hidden");
+      document.getElementById("registrationSection").classList.remove("hidden");
+    });
+
+    // Login Form Submission
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      // Validate Login Credentials
+      const email = document.getElementById("loginEmail").value;
+      const password = document.getElementById("loginPassword").value;
+      const purpose = localStorage.getItem("purpose");
+
+      if (email === localStorage.getItem("email") && password === localStorage.getItem("password")) {
+        alert("Login Successful!");
+
+        // Redirect Based on Purpose
+        if (purpose === "resume") {
+          window.location.href = "/resume.html";
+        } else if (purpose === "lms") {
+          window.location.href = "/lms.html";
+        } else if (purpose === "counseling") {
+          window.location.href = "/counseling.html";
+        }
+      } else {
+        alert("Invalid Email or Password. Please try again.");
+      }
+    });
+  </script>
+</body>
+</html>
